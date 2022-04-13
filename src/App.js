@@ -11,6 +11,7 @@ import MyAccount from "./components/MyAccount";
 import AuthRequired from "./components/AuthRequired";
 import { AuthContext } from "./context/AuthContextProvider";
 import Products from "./components/Products";
+import Cart from "./components/Cart";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route exact path="/" element={<Home />}></Route>
           <Route exact path="/myaccount" element={<MyAccount />}></Route>
           <Route exact path="/products" element={<Products />}></Route>
+          <Route exact path="/cart" element={<Cart/>}></Route>
         </Route>
 
         {/* random routes */}

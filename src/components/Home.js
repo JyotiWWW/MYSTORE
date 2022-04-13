@@ -11,6 +11,9 @@ import useAuth from "../hooks/userAuth";
 import { BASE_URL } from "../env";
 import Grid from "@mui/material/Grid";
 import {  useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { getCartProducts } from "../redux/reducers/cartReducer";
+
 const Home = () => {
   // const { auth } = useContext(AuthContext);
   const auth = useAuth();
@@ -18,9 +21,23 @@ const Home = () => {
   const [userToken, setUserToken] = useState(token);
   const [categoryProducts, setCategoryProducts] = useState([]);
   const [topRatedProducts, setTopRatedProducts] = useState([]);
+  const dispatch = useDispatch()
 
   // console.log("autuserTokenh", auth);
   const navigate=useNavigate();
+
+  useEffect(() => {
+    if (userToken) {
+      console.log("userToken effect");
+      const headers = {
+        Authorization: `Bearer ${userToken}`,
+      };
+      dispatch(getCartProducts(headers));
+    }
+  }, []);  
+
+
+
   useEffect(() => {
     const url = BASE_URL;
 

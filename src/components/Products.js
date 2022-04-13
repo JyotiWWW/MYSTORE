@@ -200,6 +200,20 @@ const Products = () => {
     setPage(0);
   };
 
+  // const addProduct =()=>{
+    // {
+    //   "_id": "612cd7f78886caaa925eb384",
+    //   "productId": "612bcfedb01b0298c4fe7523",
+    //   "productName": "Narzo",
+    //   "productSeller": "Realme",
+    //   "productColor": "silver",
+    //   "productImage": "silver-Narzo-1630305205272-639349922.jpeg",
+    //   "productStock": 40,
+    //   "orderQuantity": 1,
+    //   "productPrice": 20000,
+    //   "total": 20000
+    // }
+  // }
   return (
     <div>
       <Box sx={{ padding: "20px" }}>

@@ -16,6 +16,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import {  Navigate, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -67,7 +68,15 @@ function Header() {
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
   const [path, setPath] = React.useState(window.location.pathname);
-
+  const [cartCount,setCartCount] = React.useState(1);
+  const {__v}=useSelector((state)=>state.cart);
+  
+  React.useEffect(() => {
+    console.log('v==>',__v);
+    setCartCount(__v);
+  }, [__v])
+  
+  
   React.useEffect(() => {
     setPath(window.location.pathname);
   }, [window.location.pathname])
@@ -105,6 +114,9 @@ function Header() {
     navigate(path);
   };
 
+  const navigateToCart = () =>{
+    navigate('/cart');
+  }
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
@@ -153,11 +165,11 @@ function Header() {
       <MenuItem>
         <IconButton
           size="large"
-          aria-label="show 17 new notifications"
           color="inherit"
           edge="start"
+          onClick={navigateToCart}
         >
-          <Badge badgeContent={17} color="error">
+          <Badge badgeContent={cartCount} color="error">
             <ShoppingCartIcon />
           </Badge>
         </IconButton>
@@ -213,10 +225,10 @@ function Header() {
 
             <IconButton
               size="large"
-              aria-label="show 17 new notifications"
               color="inherit"
+              onClick={navigateToCart}
             >
-              <Badge badgeContent={17} color="error">
+              <Badge badgeContent={cartCount} color="error">
                 <ShoppingCartIcon />
               </Badge>
             </IconButton>

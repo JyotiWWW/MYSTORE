@@ -1,26 +1,27 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import 'bootstrap/dist/css/bootstrap.css';
-import {BrowserRouter,Route,Routes} from 'react-router-dom';
-import {AuthContextProvider} from './context/AuthContextProvider';
-import configureStore from './configureStore'
-import {Provider} from 'react-redux';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import "bootstrap/dist/css/bootstrap.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { AuthContextProvider } from "./context/AuthContextProvider";
+import configureStore from "./configureStore";
+import { Provider } from "react-redux";
 
-const store = configureStore()
+const store = configureStore();
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}></Provider>
-    <AuthContextProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/*" element={<App />}></Route>
-        </Routes>
-      </BrowserRouter>
-    </AuthContextProvider>
+    <Provider store={store}>
+      <AuthContextProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/*" element={<App />}></Route>
+          </Routes>
+        </BrowserRouter>
+      </AuthContextProvider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );
